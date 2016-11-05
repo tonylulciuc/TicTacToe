@@ -15,7 +15,7 @@
         android:background="@xml/menu_button_ripple_effect"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:textColor="@color/colorPrimaryLight"
+        android:textColor="@color/colorPrimary"
         android:text="@string/play_friend"
         android:onClick="onPlayFriendClick"/>
     <Button
@@ -24,7 +24,7 @@
         android:background="@xml/menu_button_ripple_effect"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:textColor="@color/colorPrimaryLight"
+        android:textColor="@color/colorPrimary"
         android:text="@string/play_computer"
         android:onClick="onPlayComputerClick"/>
     <Button
@@ -33,7 +33,7 @@
         android:background="@xml/menu_button_ripple_effect"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:textColor="@color/colorPrimaryLight"
+        android:textColor="@color/colorPrimary"
         android:text="@string/settings"
         android:id="@+id/settings"
         android:onClick="onSettingsClick"/>

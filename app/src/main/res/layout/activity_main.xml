@@ -14,7 +14,8 @@
         <!-- APPLICATION CONTENT -->
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:id="@+id/details_fragment">
         </FrameLayout>
 
         <!-- MENU LEFT DRAWER -->
