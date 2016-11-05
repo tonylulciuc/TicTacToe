@@ -3,6 +3,7 @@ package com.polybean.tony.tic_tac_toe;
 import android.app.FragmentTransaction;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.res.Configuration;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -49,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
         // Commit fragment
         fragmentTransaction.commit();
     }
-
 
     /**
      * Handle hamburger click events
