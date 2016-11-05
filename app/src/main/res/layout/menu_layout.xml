@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorMenuBackground"
+    android:orientation="vertical"
+    android:layout_gravity="start"
+    android:choiceMode="singleChoice"
+    android:layout_alignParentTop="true"
+    android:layout_centerHorizontal="true">
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@xml/menu_button_ripple_effect"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimaryLight"
+        android:text="@string/play_friend"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@xml/menu_button_ripple_effect"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimaryLight"
+        android:text="@string/play_computer" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@xml/menu_button_ripple_effect"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimaryLight"
+        android:text="@string/settings"
+        android:id="@+id/settings"/>
+</LinearLayout>

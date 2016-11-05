@@ -15,14 +15,14 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     /**
-     * Launch MainMenuActivity
+     * Launch MainActivity
      */
     private void launchActivity(){
         Handler handler = new Handler();
         handler.post(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashActivity.this, MainMenuActivity.class);
+                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });

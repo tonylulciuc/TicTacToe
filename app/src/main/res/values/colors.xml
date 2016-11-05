@@ -2,5 +2,8 @@
 <resources>
     <color name="colorPrimary">@android:color/holo_orange_light</color>
     <color name="colorPrimaryDark">@android:color/holo_orange_dark</color>
+    <color name="colorPrimaryLight">#FFE27F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="colorMenuBackground">#CCCCCC</color>
+    <color name="colorTitleBar">#EEEEEE</color>
 </resources>
