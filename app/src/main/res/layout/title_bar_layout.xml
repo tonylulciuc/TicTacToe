@@ -16,7 +16,8 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:background="@xml/title_button_ripple_effect"
-                android:stateListAnimator="@null"/>
+                android:stateListAnimator="@null"
+                android:onClick="onHamburgerClick"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
