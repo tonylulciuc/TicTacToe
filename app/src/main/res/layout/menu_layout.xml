@@ -16,7 +16,8 @@
         android:textSize="24sp"
         android:textStyle="bold"
         android:textColor="@color/colorPrimaryLight"
-        android:text="@string/play_friend"/>
+        android:text="@string/play_friend"
+        android:onClick="onPlayFriendClick"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,7 +25,8 @@
         android:textSize="24sp"
         android:textStyle="bold"
         android:textColor="@color/colorPrimaryLight"
-        android:text="@string/play_computer" />
+        android:text="@string/play_computer"
+        android:onClick="onPlayComputerClick"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -33,5 +35,6 @@
         android:textStyle="bold"
         android:textColor="@color/colorPrimaryLight"
         android:text="@string/settings"
-        android:id="@+id/settings"/>
+        android:id="@+id/settings"
+        android:onClick="onSettingsClick"/>
 </LinearLayout>
