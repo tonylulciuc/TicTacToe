@@ -5,10 +5,10 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="29dp"
         android:orientation="horizontal"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp">
         <GridLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -16,6 +16,51 @@
             android:columnCount="@integer/board_game_column_count"
             android:background="@drawable/game_board"
             android:id="@+id/game_board">
+            <Button
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:id="@+id/block_00"
+                android:background="@null"/>
+            <Button
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:id="@+id/block_01"
+                android:background="@null" />
+            <Button
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:id="@+id/block_02"
+                android:background="@null" />
+            <Button
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:id="@+id/block_10"
+                android:background="@null"/>
+            <Button
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:id="@+id/block_11"
+                android:background="@null" />
+            <Button
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:id="@+id/block_12"
+                android:background="@null" />
+            <Button
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:id="@+id/block_20"
+                android:background="@null" />
+            <Button
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:id="@+id/block_21"
+                android:background="@null"/>
+            <Button
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:id="@+id/block_22"
+                android:background="@null" />
         </GridLayout>
         <Space
             android:layout_width="25dp"
@@ -61,7 +106,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/no_score"
                         android:textSize="24sp"
-                        android:id="@+id/no_score"/>
+                        android:id="@+id/o_score"/>
                 </LinearLayout>
 
             <TextView
