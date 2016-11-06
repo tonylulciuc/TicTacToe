@@ -4,6 +4,8 @@ package com.polybean.tony.tic_tac_toe.board;
 import android.app.Activity;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,10 +14,13 @@ import android.widget.GridLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.polybean.tony.tic_tac_toe.MainActivity;
 import com.polybean.tony.tic_tac_toe.R;
 
 import java.util.ArrayList;
 
+import static com.polybean.tony.tic_tac_toe.TicTacToeApplication.BotOpponent;
+import static com.polybean.tony.tic_tac_toe.TicTacToeApplication.GameType;
 import static com.polybean.tony.tic_tac_toe.TicTacToeApplication.TicTacToeBoardLogic;
 import static com.polybean.tony.tic_tac_toe.TicTacToeApplication.PlayerOScore;
 import static com.polybean.tony.tic_tac_toe.TicTacToeApplication.PlayerTurn;
@@ -35,6 +40,49 @@ public class BoardFragment extends Fragment {
     private TextView mTextViewGameType;
     private ArrayList<View> mGrid = null;
 
+    /**
+     * This is a short hand version of implementing Bot logic
+     * This allows access to fragment data
+     */
+    private Runnable mBotLogic = new Runnable() {
+        int result;
+        @Override
+        public void run() {
+            int row = 0;
+            int column = 0;
+            Handler handler = new Handler(Looper.getMainLooper());
+
+            while (true){
+                // Is it the bots turn
+                if (BotOpponent.botTurn){
+                    row = (int)Math.abs(Math.random() * getResources().getInteger(R.integer.board_game_row_count));
+                    column = (int)Math.abs(Math.random() * getResources().getInteger(R.integer.board_game_column_count));
+
+                    // if move valid
+                    if ((result = TicTacToeBoardLogic.selectBlock(row, column)) != -1){
+                        PlayerTurn = TURN_X;
+                        BotOpponent.botTurn = false;
+                        handler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                // This is worst case approach to setting bot move
+                                restoreGameState();
+
+                                checkResult(result);
+                            }
+                        });
+                    }
+                }
+
+                try{
+                    Thread.sleep(10);
+                }catch(Exception err){
+
+                }
+            }
+        }
+    };
+
     public BoardFragment() {
         // Required empty public constructor
     }
@@ -51,6 +99,12 @@ public class BoardFragment extends Fragment {
         initGrid();
         restoreGameState();
         setClickListener();
+
+        // THIS METHOD OF INITIALIZING THE BOT IS NOT RECOMMENDED
+        if (BotOpponent == null)
+            BotOpponent = new Bot(mBotLogic);
+        // SHOULD NOT BE DEPENDENT ON THE FRAGMENT
+
         return (mSelf);
     }
 
@@ -59,13 +113,15 @@ public class BoardFragment extends Fragment {
      * @param _gameType
      */
     public void startNewGame(int _gameType){
+        PlayerTurn = TURN_X;
+        BotOpponent.botTurn = false;
         resetBoard();
         resetScore();
 
         /**
          * Display game type
          */
-        switch (_gameType){
+        switch (GameType = _gameType){
             case GAME_PLAYER_VERSUS_PLAYER:
                 mTextViewGameType.setText(getResources().getString(R.string.game_pvp));
                 break;
@@ -130,6 +186,8 @@ public class BoardFragment extends Fragment {
         mGrid.add(mSelf.findViewById(R.id.block_22));
     }
 
+
+
     /**
      *  Sets handler to manage user input
      */
@@ -143,6 +201,10 @@ public class BoardFragment extends Fragment {
                     if ((result = processMove(_view.getId())) != -1) {
                         _view.setBackgroundResource(R.drawable.x_mark);
                         PlayerTurn = TURN_O;
+
+                        // Allow the robot to make move
+                        if (result == 0 && GameType == GAME_PLAYER_VERSUS_COMPUTER)
+                            BotOpponent.botTurn = true;
                     }
                 }else{
                     if ((result = processMove(_view.getId())) != -1) {
@@ -200,13 +262,15 @@ public class BoardFragment extends Fragment {
      * @param _result [in] result of move made
      */
     private void checkResult(int _result) {
-        String msg;
-
+        // Check result
         switch (_result) {
+            case -1:
             case 0:
                 return;
             case BoardLogic.DRAW_NO_ONE_WON:
                 Toast.makeText(mSelf.getContext(), "DRAW!", Toast.LENGTH_LONG).show();
+                PlayerTurn = TURN_X;
+                BotOpponent.botTurn = false;
                 resetBoard();
                 break;
             default:
@@ -214,6 +278,8 @@ public class BoardFragment extends Fragment {
                 PlayerOScore = PlayerTurn == TURN_O ? PlayerOScore : PlayerOScore + 1;
                 mTextViewXScore.setText(String.valueOf(PlayerXScore));
                 mTextViewOScore.setText(String.valueOf(PlayerOScore));
+                PlayerTurn = TURN_X;
+                BotOpponent.botTurn = false;
                 resetBoard();
                 Toast.makeText(mSelf.getContext(), "WIN!", Toast.LENGTH_LONG).show();
                 break;
@@ -232,6 +298,9 @@ public class BoardFragment extends Fragment {
         }
     }
 
+    /**
+     * reset scoreboard
+     */
     private void resetScore(){
         // Reset score
         PlayerXScore = 0;

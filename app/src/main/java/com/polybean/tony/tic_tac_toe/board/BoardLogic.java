@@ -116,7 +116,7 @@ public class BoardLogic {
                     return (VICTORY_HORIZONTAL_BAR_ROW_1);
                 case 1:
                     return (VICTORY_HORIZONTAL_BAR_ROW_2);
-                case 3:
+                case 2:
                     return (VICTORY_HORIZONTAL_BAR_ROW_3);
             }
         }
@@ -137,7 +137,7 @@ public class BoardLogic {
                     return (VICTORY_VERTICAL_BAR_COLUMN_1);
                 case 1:
                     return (VICTORY_VERTICAL_BAR_COLUMN_2);
-                case 3:
+                case 2:
                     return (VICTORY_VERTICAL_BAR_COLUMN_3);
             }
         }

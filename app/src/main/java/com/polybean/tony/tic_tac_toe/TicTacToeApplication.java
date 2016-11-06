@@ -15,8 +15,9 @@ public class TicTacToeApplication extends Application {
     public static int PlayerOScore = 0;
     public static int PlayerTurn = TURN_X;
     public static char[][] Board = null;
-    public static Bot BotOpponent;
+    public static Bot BotOpponent = null;
     public static BoardLogic TicTacToeBoardLogic;
+    public static int GameType = 0;
 
     /**
      * Initializes the board game only once
@@ -27,7 +28,6 @@ public class TicTacToeApplication extends Application {
                                  {'n', 'n', 'n'},
                                  {'n', 'n', 'n'}};
 
-            BotOpponent = new Bot();
             TicTacToeBoardLogic = new BoardLogic();
         }
     }
