@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Tic-Tac-Toe</string>
-    <string name="play_computer">Play Computer</string>
-    <string name="play_friend">Play Friend</string>
+    <string name="new_game">New Game:</string>
+    <string name="new_play_computer">New game vs. Computer</string>
+    <string name="new_play_friend">New game vs. player</string>
     <string name="settings">Settings</string>
     <string name="x_label">X : </string>
     <string name="o_label">O : </string>

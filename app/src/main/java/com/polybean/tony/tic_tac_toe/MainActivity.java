@@ -34,8 +34,9 @@ public class MainActivity extends AppCompatActivity {
      * Create tic-tac-toe board
      */
     private void createBoard(){
-        FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        TicTacToeApplication ticTacToeApplication = (TicTacToeApplication)getApplication();
+        FragmentManager fragmentManager           = getFragmentManager();
+        FragmentTransaction fragmentTransaction   = fragmentManager.beginTransaction();
         Fragment fragment;
 
         // If fragment already exists
@@ -46,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
             mBoardFragment = new BoardFragment();
             fragmentTransaction.add(R.id.details_fragment, mBoardFragment, "board");
         }
+
+        // Initialize the board game
+        ticTacToeApplication.initBoard();
 
         // Commit fragment
         fragmentTransaction.commit();
@@ -67,8 +71,9 @@ public class MainActivity extends AppCompatActivity {
      * @param _view [in] view associated with click event
      */
     public void onPlayFriendClick(View _view){
-        // TODO : create game for pvp
-        Toast.makeText(this, "Player versus player option not ready!", Toast.LENGTH_LONG).show();
+        mLeftDrawer.closeDrawer(Gravity.LEFT);
+        mBoardFragment.startNewGame(BoardFragment.GAME_PLAYER_VERSUS_PLAYER);
+        Toast.makeText(this, "Starting new game PvP!", Toast.LENGTH_LONG).show();
     }
 
     /**
@@ -76,8 +81,9 @@ public class MainActivity extends AppCompatActivity {
      * @param _view [in] view associated with click event
      */
     public void onPlayComputerClick(View _view){
-        // TODO : create game for pvc
-        Toast.makeText(this, "Player versus computer option not ready!", Toast.LENGTH_LONG).show();
+        mLeftDrawer.closeDrawer(Gravity.LEFT);
+        mBoardFragment.startNewGame(BoardFragment.GAME_PLAYER_VERSUS_COMPUTER);
+        Toast.makeText(this, "Starting new game PvC!", Toast.LENGTH_LONG).show();
     }
 
     /**
@@ -85,6 +91,8 @@ public class MainActivity extends AppCompatActivity {
      * @param _view [in] view associated with click event
      */
     public void onSettingsClick(View _view){
+        mLeftDrawer.closeDrawer(Gravity.LEFT);
+
         // TODO : create settings activity for pvc options
         Toast.makeText(this, "Settings not ready!", Toast.LENGTH_LONG).show();
     }
